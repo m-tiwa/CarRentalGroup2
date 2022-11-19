@@ -10,13 +10,13 @@ const User = require('../models/user');
 
 //Create new Order entry
 const addOrder = async ( req, res ) => {
-    /*const errors = validationResult(req);
-    console.log(req.body.startDate);
-    console.log(req.body.endDate);
-    console.log(errors);
+    const errors = validationResult(req);
+    //console.log(req.body.startDate);
+    //console.log(req.body.endDate);
+    //console.log(errors);
     if(!errors.isEmpty()){
         return res.status(422).json({msg: 'Invalid inputs, please check your data.'});
-    };*/
+    };
 
     const { firstName, lastName, startDate, endDate, car, customer } = req.body;
 
@@ -67,13 +67,16 @@ const addOrder = async ( req, res ) => {
         //Start Transaction
         const session = await mongoose.startSession();
         session.startTransaction();
-        await order.save({session: session});
+        //await order.save({session: session});
+        await order.save();
         //Push order in Users orders array
         user.orders.push(order);
-        await user.save({session: session});
+        //await user.save({session: session});
+        await user.save();
         //Decrement avaliable cars by one
         const newCar = await Car.findByIdAndUpdate({_id:order.car}, {$inc: {qt: -1}}) 
-        await newCar.save({session: session});
+        //await newCar.save({session: session});
+        await newCar.save();
         await session.commitTransaction();
     }catch(err){
         console.error(err.message);

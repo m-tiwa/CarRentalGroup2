@@ -12,9 +12,9 @@ router.post('/' ,
         check('endDate', 'Please enter a valid number of seats').isISO8601().toDate(),
         check('startDate', 'Please enter a valid date').isISO8601().toDate() 
         .custom((value, {req}) => {
-            if(value <= Date.now()){
+            /*if(value <= Date.now()){
                 throw new Error('Invalide date');
-            }
+            }*/
             return true;
         })      
     ],

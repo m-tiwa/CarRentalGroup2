@@ -7,7 +7,7 @@ const ConnectDB = async () => {
 
     //MongoDB URI saved in .env 
     //const db = process.env.MONGO_DB_URI;
-	const db = 'mongodb://localhost:27017/demodb?retryWrites=false';
+	const db = 'mongodb://localhost:27017/demodb';
 
     try{
         await mongoose.connect(db, 

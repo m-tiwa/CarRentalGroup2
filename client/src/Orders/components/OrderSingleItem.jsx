@@ -36,10 +36,10 @@ const OrderSingleItem = (props) => {
             <div className='order-card'>
                 <div className='item-cars' >
                     <p className='name'>{props.name}<span> {props.model}</span></p>
-                    <img src={ `http://localhost:5000/${props.image}`} alt='car'/>
+                    
                 </div>
                 <div className='main-order-wrapper'>
-                    <p className='total-price'>Your price:<span> {totalPrice} </span>€</p>
+                    <p className='total-price'>Your price: Rs <span> {totalPrice} </span></p>
                     <p className='full-name'>{props.firstName}<span> {props.lastName}</span></p>
                     <div className='order-info'>
                         <p>Rent dates from {startDate} <span>to {endDate}</span></p>
